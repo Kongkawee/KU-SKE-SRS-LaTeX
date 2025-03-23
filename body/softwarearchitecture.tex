@@ -45,7 +45,7 @@ a blueprint for how the game's components interact and support both educational 
     This gamified interaction boosts motivation and retention through high engagement.
 
     \clearpage
-    
+
     \item \textbf{Question}\\
     A single quiz item that includes a question prompt, multiple answer options, and one correct answer. 
     Each question is tied to a specific vocabulary word and tests the player's understanding of its meaning or usage.
@@ -73,17 +73,43 @@ a blueprint for how the game's components interact and support both educational 
     \label{fig:design-class-diagram}
 \end{figure}
 
+\clearpage
+
 \section{Sequence Diagram}
 \label{section:sequence-diagram}
-<TIP: Sequence diagrams describe how the software runs at runtime.
-You do not have to create a sequence diagram for every scenario. However,
-there should be one for all the main ones./>
 
-<ChatGPT: Creating a sequence diagram for every use case is not
-strictly necessary, but it can be a valuable tool in certain situations. Sequence
-diagrams are particularly useful for illustrating the interactions between different
-components or objects in a system over time, showcasing the flow of messages
-or actions between them./>
+A player initiates a battle. During the battle, the system presents vocabulary questions. 
+The player's answers determine the outcome of the battle (correct = damage to enemy). 
+Upon winning, the player earns a reward and their vocabulary progress is updated.
+
+\vspace{1em}
+
+\textbf{Scenario: A player completes a vocabulary battle challenge}
+\begin{enumerate}
+    \item The player starts a new battle from the main game menu.
+    \item The game engine requests a new challenge from the challenge manager.
+    \item The challenge manager creates and initializes a battle challenge.
+    \item The battle system requests a vocabulary word and generates a question.
+    \item The system presents the question to the player.
+    \item The player submits an answer.
+    \item The system checks the answer for correctness.
+    \item If correct, the system triggers a player attack; otherwise, the enemy attacks.
+    \item Steps 4 to 8 repeat until the battle ends.
+    \item The game engine determines the battle outcome (win or lose).
+    \item If the player wins, the reward system grants experience or items.
+    \item The player's vocabulary profile is updated based on the words used in the battle.
+\end{enumerate}
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{assets/ku/sequence_diagram.png}
+    \caption{Sequence Diagram of Spell Splash}
+    \label{fig:sequence-diagram}
+\end{figure}
+
+\clearpage
 
 \section{Algorithm}
 \label{section:algorithm}
